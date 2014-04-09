@@ -57,6 +57,22 @@ include Slate::Controller::RequestIdManager
 
 This will add a thread local variable keyed under `:request_id` with the current rails managed request id if present or generate one if not. Note that if the request has an `X-Request-Id` header present, this will be used. This makes tracking request id through service based applications possible.
 
+### Request Id and Threads
+Because the request is is tracked via a threadlocal variable, it needs to be passed into threads if it's to be referenced. At this point, the only baked-in support for this is for Celluloid futures.
+
+To get automatic passing of request id into celluloid futures you can mix the `Slate::FutureFactory` into your class and create your futures via `traceable_future`.
+
+```ruby
+include Slate::FutureFactory
+
+def my_future_method
+  traceable_future do
+    //do something in a thread
+    //return something
+  end
+end
+```
+
 ## Metrics
 
 ### Timer
