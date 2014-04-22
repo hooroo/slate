@@ -79,8 +79,8 @@ end
 
 ```ruby
 timed_result = Slate::Metrics.time('timed_event_name', { foo: 'bar' }) do
-  //do somthing
-  //return something
+  # do somthing
+  # return something
 end
 ```
 
@@ -116,11 +116,15 @@ It is anticipated that the metrics side of Slate will evolve to include a few mo
 ##Logging
 Slate is intended to be used instad of the rails log and uses log4r under the covers. The standard logger interface is available (debug, info, warn, error, fatal) with a small enhancement being that either a String or Hash can be logged.
 
+```ruby
 Slate::Logger.info('Log message')
+```
 
 or
 
+```ruby
 Slate::Logger.info(foo: 'bar', baz: 'boz')
+```
 
 
 If a hash is passed, it will be logged in the format:
@@ -128,8 +132,3 @@ If a hash is passed, it will be logged in the format:
 ```foo=bar, baz=boz```
 
 This format is good for parsing by splunk so is generally preferable to log messages that pass an arbitrary string.
-
-
-
-
-
