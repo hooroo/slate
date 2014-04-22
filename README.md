@@ -39,7 +39,7 @@ outputters:
 ```
 
 ### Setting the logger on libs
-Some libs will allow injection of the logger or metrics. For example, the http_api_gem can have this set. A reasonable patter for this is to create `config/initializers/slate.rb` and add the following:
+Some libs will allow injection of the logger or metrics. For example, the http_api_gem can have this set. A reasonable pattern for this is to create `config/initializers/slate.rb` and add the following:
 
 ```ruby
 HttpApiClient.logger = Slate::Logger
@@ -67,8 +67,8 @@ include Slate::FutureFactory
 
 def my_future_method
   traceable_future do
-    //do something in a thread
-    //return something
+    # do something in a thread
+    # return something
   end
 end
 ```
