@@ -1,3 +1,5 @@
+require 'slate/metrics/timed_result'
+
 module  Slate
   module Controller
     module ActionTimer
