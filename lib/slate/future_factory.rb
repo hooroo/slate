@@ -1,5 +1,3 @@
-require 'celluloid'
-
 module Slate
   module FutureFactory
 

@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'celluloid'
 require 'slate/future_factory'
 
 module Slate
