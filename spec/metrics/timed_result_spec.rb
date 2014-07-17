@@ -18,7 +18,7 @@ module Slate
         end
 
         it 'logs event with base data' do
-          formatted_entry = "event_name=my_event, request_id=#{request_id}, timing=#{1000}"
+          formatted_entry = "event_name='my_event', request_id='#{request_id}', timing='#{1000}'"
           formatter.should_receive(:format).with(event_name: 'my_event', request_id: request_id, timing: 1000).and_return formatted_entry
           logger.should_receive(:info).with(formatted_entry)
           TimedResult.time(logger, formatter, 'my_event') {  }
@@ -26,7 +26,7 @@ module Slate
 
         it 'logs event with extra data' do
 
-          formatted_entry = "event_name=my_event, request_id=#{request_id}, timing=#{1000}"
+          formatted_entry = "event_name='my_event', request_id='#{request_id}', timing='#{1000}'"
           formatter.should_receive(:format).with(event_name: 'my_event', request_id: request_id, timing: 1000, foo: 'bar').and_return formatted_entry
           logger.should_receive(:info).with(formatted_entry)
 
