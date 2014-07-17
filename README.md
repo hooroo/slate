@@ -55,13 +55,19 @@ In order to track the Request Id through logs and metrics, add the following to 
 include Slate::Controller::RequestIdManager
 ```
 
-This will add a thread local variable keyed under `:request_id` with the current rails managed request id if present or generate one if not. Note that if the request has an `X-Request-Id` header present, this will be used. This makes tracking request id through service based applications possible.
+This will add a thread local variable keyed under `:request_id` (this is encapsulated by `Slate::RequestIdHolder`, see next section) with the current rails managed request id if present or generate one if not. Note that if the request has an `X-Request-Id` header present, this will be used. This makes tracking request id through service based applications possible.
 
 ## Request Id Tracking in POROs
 In order to set a Request Id in a standard Plain Old Ruby Object (background worker, etc) you should use:
 
 ```
 Slate::RequestIdHolder.request_id = some_request_id
+```
+
+You can also get the 'request_id':
+
+```
+Slate::RequestIdHolder.request_id
 ```
 
 ### Request Id and Threads
