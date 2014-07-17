@@ -1,37 +1,21 @@
 # encoding: utf-8
 
 require 'slate/metrics/timed_result'
-require 'slate/request_id_holder'
 
 module Slate
   module Metrics
     describe TimedResult do
 
-      context 'without extra log data' do
+      describe '.time' do
 
-        let(:request_id) { 'abc-123' }
         let(:logger) { double('logger') }
-        let(:formatter) { double('formatter') }
+        let(:event_name) {'my_event'}
+        let(:timing) {1000}
 
-        before do
-          TimedResult.stub(:millis_since).and_return 1000
-          RequestIdHolder.request_id = request_id
-        end
-
-        it 'logs event with base data' do
-          formatted_entry = "event_name='my_event', request_id='#{request_id}', timing='#{1000}'"
-          formatter.should_receive(:format).with(event_name: 'my_event', request_id: request_id, timing: 1000).and_return formatted_entry
-          logger.should_receive(:info).with(formatted_entry)
-          TimedResult.time(logger, formatter, 'my_event') {  }
-        end
-
-        it 'logs event with extra data' do
-
-          formatted_entry = "event_name='my_event', request_id='#{request_id}', timing='#{1000}'"
-          formatter.should_receive(:format).with(event_name: 'my_event', request_id: request_id, timing: 1000, foo: 'bar').and_return formatted_entry
-          logger.should_receive(:info).with(formatted_entry)
-
-          TimedResult.time(logger, formatter, 'my_event', { foo: 'bar' }) {  }
+        it 'calls logger with timed event entry' do
+          expect(TimedResult).to receive(:millis_since).and_return(timing)
+          expect(logger).to receive(:call).with({event_name: event_name, timing: timing})
+          TimedResult.time(logger, 'my_event') {  }
         end
 
       end

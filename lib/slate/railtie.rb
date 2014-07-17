@@ -27,6 +27,7 @@ module Slate
       Slate::Metrics.formatter = Slate::SplunkFormatter
 
       Slate::Logger.decorator = Slate::LogEntryDecorator
+      Slate::Metrics.decorator = Slate::LogEntryDecorator
 
       if Rails.env.development?
         Log4r::Logger['default'].add('console_log')
