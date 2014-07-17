@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'slate/request_id_holder'
+
 module Slate
   module Metrics
     class TimedResult
@@ -9,7 +11,7 @@ module Slate
         yield
       ensure
 
-        request_id = Thread.current[:request_id]
+        request_id = RequestIdHolder.request_id
 
         log_entry = {
           event_name: event_name,

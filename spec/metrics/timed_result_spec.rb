@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'slate/metrics/timed_result'
+require 'slate/request_id_holder'
 
 module Slate
   module Metrics
@@ -14,7 +15,7 @@ module Slate
 
         before do
           TimedResult.stub(:millis_since).and_return 1000
-          Thread.current[:request_id] = request_id
+          RequestIdHolder.request_id = request_id
         end
 
         it 'logs event with base data' do

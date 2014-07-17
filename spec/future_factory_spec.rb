@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'celluloid'
 require 'slate/future_factory'
+require 'slate/request_id_holder'
 
 module Slate
   describe FutureFactory do
@@ -18,10 +19,10 @@ module Slate
 
       it "passes request id into future thread" do
 
-        Thread.current[:request_id] = request_id
+        RequestIdHolder.request_id = request_id
 
         future = traceable_future do
-          expect(Thread.current[:request_id]).to eq request_id
+          expect(RequestIdHolder.request_id).to eq request_id
         end
 
         future.value

@@ -48,7 +48,7 @@ HttpApiClient.metrics = Slate::Metrics
 
 Obviously different libraries will have different ways of configuring a logger.
 
-## Request Id Tracking
+## Request Id Tracking In Rails Controllers
 In order to track the Request Id through logs and metrics, add the following to your application_controller or another suitable controller base class.
 
 ```ruby
@@ -56,6 +56,13 @@ include Slate::Controller::RequestIdManager
 ```
 
 This will add a thread local variable keyed under `:request_id` with the current rails managed request id if present or generate one if not. Note that if the request has an `X-Request-Id` header present, this will be used. This makes tracking request id through service based applications possible.
+
+## Request Id Tracking in POROs
+In order to set a Request Id in a standard Plain Old Ruby Object (background worker, etc) you should use:
+
+```
+Slate::RequestIdHolder.request_id = some_request_id
+```
 
 ### Request Id and Threads
 Because the request is is tracked via a threadlocal variable, it needs to be passed into threads if it's to be referenced. At this point, the only baked-in support for this is for Celluloid futures.

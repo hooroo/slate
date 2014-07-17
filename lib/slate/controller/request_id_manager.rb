@@ -1,5 +1,10 @@
+#encoding: utf-8
+
 #Mix into rails controller to have the request id set into a thread local for reference in log entries
 #Uses the rails X-Request-Id header if present or generates a new Id
+
+require 'slate/request_id_holder'
+
 module Slate
   module Controller
     module RequestIdManager
@@ -9,17 +14,13 @@ module Slate
       end
 
       def set_request_id
-        Thread.current[:request_id] = request_id
+        RequestIdHolder.request_id = request_id
       end
 
       private
 
       def request_id
-        if request && request.uuid
-          request.uuid
-        else
-          SecureRandom.uuid
-        end
+        request.uuid if request
       end
 
     end
