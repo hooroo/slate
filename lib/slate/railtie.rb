@@ -4,6 +4,7 @@ require 'log4r/formatter/log4jxmlformatter'
 require 'log4r/outputter/fileoutputter'
 require 'log4r/outputter/consoleoutputters'
 require 'slate/splunk_formatter'
+require 'slate/log_entry_decorator'
 
 module Slate
 
@@ -24,6 +25,8 @@ module Slate
 
       Slate::Logger.formatter = Slate::SplunkFormatter
       Slate::Metrics.formatter = Slate::SplunkFormatter
+
+      Slate::Logger.decorator = Slate::LogEntryDecorator
 
       if Rails.env.development?
         Log4r::Logger['default'].add('console_log')
