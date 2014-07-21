@@ -4,7 +4,7 @@ module Slate
   module SplunkFormatter
     def self.format(entry)
       entry.inject [] do |result, entry|
-        result << "#{entry[0]}='#{entry[1]}'"
+        result << "#{entry[0]}=\"#{entry[1]}\""
       end.join(", ")
     end
   end
