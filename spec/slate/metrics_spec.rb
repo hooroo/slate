@@ -1,5 +1,6 @@
 # encoding: utf-8
-require 'slate/metrics'
+
+require 'spec_helper'
 
 module Slate
   describe Metrics do

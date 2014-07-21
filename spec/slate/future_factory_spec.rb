@@ -1,7 +1,7 @@
 # encoding: utf-8
+
+require 'spec_helper'
 require 'celluloid'
-require 'slate/future_factory'
-require 'slate/request_id_holder'
 
 module Slate
   describe FutureFactory do
