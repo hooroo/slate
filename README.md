@@ -145,3 +145,14 @@ If a hash is passed, it will be logged in the format:
 ```foo=bar, baz=boz```
 
 This format is good for parsing by splunk so is generally preferable to log messages that pass an arbitrary string.
+
+
+##Future
+In recent conversations it has become apparent that the 'request_id' actually encapsulates many different roles, each for different purposes.
+
+* For being able to track the syncronous side of a request from a third party, throughout many different services
+* For being able to track all parts of a request from a third party throughout many different services. This includes both synchronous requests and background processing
+* If a request to an individual service gets split into multiple logs, then those logs need a way of being correlated
+* For being able to track all requests around a specific resource. For instance: send an email, then all email events should have the same id to correlate them back to that email
+
+Each of the above id's have been refferred to as RequestId's in various conversations, however they are all extremly different. Therefore we need to create different names for each and log them all out differently
