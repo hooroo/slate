@@ -42,6 +42,19 @@ module Slate
           expect(described_class.format(entry)).to eq("key1=\"\", key2=")
         end
       end
+
+      context "when the value is boolean" do
+        let(:entry) do
+          {
+            key1: true,
+            key2: false
+          }
+        end
+
+        it 'does not add quotes' do
+          expect(described_class.format(entry)).to eq("key1=\"true\", key2=\"false\"")
+        end
+      end
     end
   end
 end
