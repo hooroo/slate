@@ -29,6 +29,19 @@ module Slate
           expect(described_class.format(entry)).to eq('key1="value1 \"value2\"", key2="value2 "')
         end
       end
+
+      context "when the value is nil" do
+        let(:entry) do
+          {
+            key1: '',
+            key2: nil
+          }
+        end
+
+        it 'does not add quotes' do
+          expect(described_class.format(entry)).to eq("key1=\"\", key2=")
+        end
+      end
     end
   end
 end
