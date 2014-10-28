@@ -2,8 +2,8 @@
 module Slate
   module RequestIdHolder
 
-    def self.request_id=(new_request_id)
-      Thread.current[:request_id] = new_request_id || SecureRandom.uuid
+    def self.request_id=(request_id)
+      Thread.current[:request_id] = request_id || SecureRandom.uuid
     end
 
     def self.request_id
