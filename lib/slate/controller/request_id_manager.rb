@@ -20,7 +20,7 @@ module Slate
       private
 
       def request_id
-        request.uuid if request
+        request.uuid || SecureRandom.uuid
       end
 
     end
