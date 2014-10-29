@@ -14,7 +14,7 @@ module Slate
       end
 
       def set_correlation_id
-        RequestIdHolder.correlation_id = correlation_id
+        CorrelationIdHolder.correlation_id = correlation_id
       end
 
       private
