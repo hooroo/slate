@@ -12,7 +12,7 @@ module Slate
 
     include Log4r
 
-    initializer "slate_railtie.configure_rails_initialization" do
+    initializer 'slate_railtie.configure_rails_initialization' do
 
       log4r_config = YAML.load_file(Rails.root.join('config/log4r.yml'))
 

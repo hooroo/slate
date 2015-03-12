@@ -4,19 +4,19 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'slate/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "slate"
+  spec.name          = 'slate'
   spec.version       = Slate::VERSION
-  spec.authors       = ["Rob Monie"]
-  spec.email         = ["robmonie@gmail.com"]
+  spec.authors       = ['Rob Monie']
+  spec.email         = ['robmonie@gmail.com']
   spec.summary       = %q{Logging and metrics capturing utils.}
   spec.description   = %q{}
-  spec.homepage      = ""
-  spec.license       = "MIT"
+  spec.homepage      = ''
+  spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'log4r'
 

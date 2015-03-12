@@ -8,8 +8,8 @@ module Slate
     describe '.format' do
       let(:entry) do
         {
-          key1: "value1",
-          key2: "value2"
+          key1: 'value1',
+          key2: 'value2'
         }
       end
       context 'when there is a simple value' do
@@ -22,7 +22,7 @@ module Slate
         let(:entry) do
           {
             key1: 'value1 "value2"',
-            key2: "value2 "
+            key2: 'value2 '
           }
         end
         it 'escapes quotes inside quoted values' do
@@ -30,7 +30,7 @@ module Slate
         end
       end
 
-      context "when the value is nil" do
+      context 'when the value is nil' do
         let(:entry) do
           {
             key1: '',
@@ -43,7 +43,7 @@ module Slate
         end
       end
 
-      context "when the value is boolean" do
+      context 'when the value is boolean' do
         let(:entry) do
           {
             key1: true,

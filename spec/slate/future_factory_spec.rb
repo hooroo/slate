@@ -8,16 +8,16 @@ module Slate
 
     include FutureFactory
 
-    describe "future creation" do
+    describe 'future creation' do
 
       let(:request_id) { 'abc-123' }
 
-      it "creates a future" do
+      it 'creates a future' do
         future = traceable_future {}
         expect(future).to be_kind_of Celluloid::Future
       end
 
-      it "passes request id into future thread" do
+      it 'passes request id into future thread' do
 
         RequestIdHolder.request_id = request_id
 
