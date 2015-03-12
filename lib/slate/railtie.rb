@@ -3,7 +3,7 @@ require 'log4r/yamlconfigurator'
 require 'log4r/formatter/log4jxmlformatter'
 require 'log4r/outputter/fileoutputter'
 require 'log4r/outputter/consoleoutputters'
-require 'slate/splunk_formatter'
+require 'slate/formatters'
 require 'slate/log_entry_decorator'
 
 module Slate
