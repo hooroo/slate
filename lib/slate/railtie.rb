@@ -23,8 +23,8 @@ module Slate
       Slate::Logger.logger = Log4r::Logger['default']
       Slate::Metrics.logger = Log4r::Logger['metrics']
 
-      Slate::Logger.formatter = Slate::SplunkFormatter
-      Slate::Metrics.formatter = Slate::SplunkFormatter
+      Slate::Logger.formatter = Slate::Formatter::Splunk
+      Slate::Metrics.formatter = Slate::Formatter::Splunk
 
       Slate::Logger.decorator = Slate::LogEntryDecorator
       Slate::Metrics.decorator = Slate::LogEntryDecorator

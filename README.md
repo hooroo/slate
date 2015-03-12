@@ -71,7 +71,7 @@ Slate::RequestIdHolder.request_id
 ```
 
 ### Request Id and Threads
-Because the request is is tracked via a threadlocal variable, it needs to be passed into threads if it's to be referenced. At this point, the only baked-in support for this is for Celluloid futures.
+Because the request id is tracked via a threadlocal variable, it needs to be passed into threads if it's to be referenced. At this point, the only baked-in support for this is for Celluloid futures.
 
 To get automatic passing of request id into celluloid futures you can mix the `Slate::FutureFactory` into your class and create your futures via `traceable_future`.
 
@@ -124,10 +124,10 @@ specific actions can be specified using the regular filters declaration
 around_action :time_action, only: [:index, :show]
 ```
 
-It is anticipated that the metrics side of Slate will evolve to include a few more ways of capturing metrics over time  such as guages, meters, counters etc.  Note however that the only intended output for these logs at this point is Splunk which is not purpose built for all metrics.
+It is anticipated that the metrics side of Slate will evolve to include a few more ways of capturing metrics over time such as guages, meters, counters etc.  Note however that the only intended output for these logs at this point is Splunk which is not purpose built for all metrics.
 
 ##Logging
-Slate is intended to be used instad of the rails log and uses log4r under the covers. The standard logger interface is available (debug, info, warn, error, fatal) with a small enhancement being that either a String or Hash can be logged.
+Slate is intended to be used instead of the rails log and uses log4r under the covers. The standard logger interface is available (debug, info, warn, error, fatal) with a small enhancement being that either a String or Hash can be logged.
 
 ```ruby
 Slate::Logger.info('Log message')
