@@ -5,20 +5,26 @@ module Slate
   module Formatter
     describe JSON do
       describe '.format' do
-        let(:entry) { Hash[event_name: 'booya'] }
+        let(:entry) { Hash['event_name' => 'booya'] }
 
-        subject { described_class.format(entry) }
+        subject(:json) { described_class.format(entry) }
+
+        let(:parsed_json)  { ::JSON.parse(json) }
 
         before(:each) do
           Timecop.freeze
         end
 
-        it 'adds a timestamp' do
-          expect(::JSON.parse(subject)).to include('timestamp' => Time.now.iso8601)
+        it 'adds a _time field to the result' do
+          expect(parsed_json).to include('_time' => Time.now.iso8601)
+        end
+
+        it 'expects the _time field to be the first KV pair' do
+          expect(parsed_json.first).to eq(['_time', Time.now.iso8601])
         end
 
         it 'returns the original hash' do
-          expect(::JSON.parse(subject)).to include('event_name' => 'booya')
+          expect(parsed_json).to include(entry)
         end
 
         after do

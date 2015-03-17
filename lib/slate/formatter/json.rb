@@ -4,7 +4,7 @@ module Slate
   module Formatter
     module JSON
       def self.format(entry)
-        entry.merge(timestamp: Time.now.iso8601).to_json
+        { _time: Time.now.iso8601 }.merge(entry).to_json
       end
     end
   end

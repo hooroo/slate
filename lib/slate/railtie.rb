@@ -7,9 +7,7 @@ require 'slate/formatters'
 require 'slate/log_entry_decorator'
 
 module Slate
-
   class Railtie < Rails::Railtie
-
     include Log4r
 
     initializer 'slate_railtie.configure_rails_initialization' do
@@ -33,9 +31,6 @@ module Slate
         Log4r::Logger['default'].add('console_log')
         Log4r::Logger['metrics'].add('console_log')
       end
-
     end
   end
 end
-
-

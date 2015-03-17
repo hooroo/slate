@@ -1,15 +1,10 @@
-#encoding: utf-8
-
 require 'slate/request_id_holder'
 require 'slate/correlation_id_holder'
 
 module Slate
   module LogEntryDecorator
-
-
-    #Strike 1: This is not a decorator. Confusing!
+    # Strike 1: This is not a decorator. Confusing!
     def self.decorate(log_entry)
-
       hashed_log_entry = hashify(log_entry)
       hashed_log_entry[:request_id] = RequestIdHolder.request_id unless RequestIdHolder.request_id.to_s.empty?
       hashed_log_entry[:correlation_id] = CorrelationIdHolder.correlation_id unless CorrelationIdHolder.correlation_id.to_s.empty?
