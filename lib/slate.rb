@@ -1,4 +1,3 @@
-
 require 'slate/version'
 require 'slate/logger'
 require 'slate/metrics'
@@ -9,5 +8,4 @@ require 'slate/future_factory'
 require 'slate/railtie' if defined?(Rails)
 
 module Slate
-
 end
