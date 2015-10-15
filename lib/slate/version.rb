@@ -1,3 +1,4 @@
 module Slate
-  VERSION = "1.0.#{ENV['PATCH_VERSION'] || 0}"
+  PATCH= ENV['PATCH_VERSION'] || 0
+  VERSION = "1.0.#{PATCH}"
 end

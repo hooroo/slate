@@ -16,6 +16,7 @@ app:
     RSPEC_FORMATTER:
     BUILDBOX_AGENT_UID:
     BUILDBOX_AGENT_GID:
+    BUILDKITE_BUILD_NUMBER:
   volumes:
     - .:/application
   working_dir: /application
