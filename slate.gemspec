@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'celluloid', '~> 0.15'
   spec.add_development_dependency 'rspec', '~> 3.2'
   spec.add_development_dependency 'timecop', '~> 0.7.3'
+  spec.add_development_dependency 'hitimes', '~> 1.2.3' #For some reason CI is not detecting this dependency from celluloid when it installs.
 end
