@@ -1,4 +1,3 @@
-source 'https://rubygems.org'
 source 'http://gems.in.jqdev.net'
 
 # Specify your gem's dependencies in slate.gemspec
