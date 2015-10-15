@@ -1,5 +1,5 @@
 app:
-  image: docker-registry.in.jqdev.net/hooroo-base-ruby-${RUBY_VERSION}:latest
+  image: docker-registry.in.jqdev.net/hooroo-base-${RUBY_VERSION}:stable
   environment:
     TZ: Australia/Melbourne
     LANG: en_US.UTF-8
