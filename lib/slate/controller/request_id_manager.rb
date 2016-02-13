@@ -1,7 +1,5 @@
-#encoding: utf-8
-
-#Mix into rails controller to have the request id set into a thread local for reference in log entries
-#Uses the rails X-Request-Id header if present or generates a new Id
+# Mix into rails controller to have the request id set into a thread local for reference in log entries
+# Uses the rails X-Request-Id header if present or generates a new Id
 
 require 'slate/request_id_holder'
 

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'slate/metrics/timed_result'
 
 module Slate

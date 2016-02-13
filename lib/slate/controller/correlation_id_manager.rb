@@ -1,7 +1,5 @@
-#encoding: utf-8
-
-#Mix into rails controller to have a correlation id set into a thread local for reference in log entries
-#Uses the X-Correlation-Id header if present or generates a new Id
+# Mix into rails controller to have a correlation id set into a thread local for reference in log entries
+# Uses the X-Correlation-Id header if present or generates a new Id
 
 require 'slate/correlation_id_holder'
 
