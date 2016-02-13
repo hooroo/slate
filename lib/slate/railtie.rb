@@ -11,26 +11,20 @@ module Slate
     include Log4r
 
     initializer 'slate_railtie.configure_rails_initialization' do
-
       log4r_config = YAML.load_file(Rails.root.join('config/log4r.yml'))
 
-      log_cfg = YamlConfigurator
+      log_cfg        = YamlConfigurator
       log_cfg['ENV'] = Rails.env
       log_cfg.decode_yaml(log4r_config)
 
-      Slate::Logger.logger = Log4r::Logger['default']
+      Slate::Logger.logger  = Log4r::Logger['default']
       Slate::Metrics.logger = Log4r::Logger['metrics']
 
-      Slate::Logger.formatter = Slate::Formatter::Splunk
+      Slate::Logger.formatter  = Slate::Formatter::Splunk
       Slate::Metrics.formatter = Slate::Formatter::Splunk
 
-      Slate::Logger.decorator = Slate::LogEntryDecorator
+      Slate::Logger.decorator  = Slate::LogEntryDecorator
       Slate::Metrics.decorator = Slate::LogEntryDecorator
-
-      if Rails.env.development?
-        Log4r::Logger['default'].add('console_log')
-        Log4r::Logger['metrics'].add('console_log')
-      end
     end
   end
 end
