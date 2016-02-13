@@ -1,5 +1,3 @@
-#encoding: utf-8
-
 require 'slate/request_id_holder'
 
 module Slate
