@@ -42,9 +42,13 @@ outputters:
 Some libs will allow injection of the logger or metrics. For example, the http_api_gem can have this set. A reasonable pattern for this is to create `config/initializers/slate.rb` and add the following:
 
 ```ruby
-HttpApiClient.logger = Slate::Logger
-HttpApiClient.metrics = Slate::Metrics
+HttpApiClient.logger = Slate::Logger.new
 ```
+
+A logger can be configured with:
+
+`logger` - A named log4r logger - Eg. `Log4r::Logger['default']`
+`formatter` - A slate or custom formatter Eg. `Slate::Formatter::JSON` or `Slate::Formatter::Splunk`
 
 Obviously different libraries will have different ways of configuring a logger.
 
