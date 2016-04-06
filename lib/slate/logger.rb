@@ -1,5 +1,38 @@
 module Slate
-  module Logger
+  class Logger
+
+    def initialize(logger: Log4r::Logger['default'], formatter: Formatter::JSON, decorator: Slate::LogEntryDecorator)
+      @logger = logger
+      @formatter = formatter
+      @decorator = decorator
+    end
+
+    def debug(log_entry)
+      @logger.debug(decorate_log_entry(log_entry))
+    end
+
+    def info(log_entry)
+      @logger.info(decorate_log_entry(log_entry))
+    end
+
+    def warn(log_entry)
+      @logger.warn(decorate_log_entry(log_entry))
+    end
+
+    def error(log_entry)
+      @logger.error(decorate_log_entry(log_entry))
+    end
+
+    def fatal(log_entry)
+      @logger.fatal(decorate_log_entry(log_entry))
+    end
+
+    def decorate_log_entry(log_entry)
+      @formatter.format(@decorator.decorate(log_entry))
+    end
+
+
+    ## Maintain for backwards compatibility
 
     def self.debug(log_entry)
       @logger.debug(decorate_log_entry(log_entry))
