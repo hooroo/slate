@@ -1,4 +1,4 @@
-source 'http://gems.in.jqdev.net'
+source 'http://gems.services.jqdev.net'
 
 # Specify your gem's dependencies in slate.gemspec
 gemspec
