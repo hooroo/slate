@@ -6,9 +6,12 @@ require 'slate/request_id_holder'
 module Slate
   module Controller
     module RequestIdManager
-
       def self.included(base)
-        base.before_filter :set_request_id
+        if base.respond_to?(:before_action)
+          base.before_action :set_request_id
+        else
+          base.before_filter :set_request_id
+        end
       end
 
       def set_request_id
