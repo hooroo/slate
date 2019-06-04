@@ -1,8 +1,5 @@
-source 'http://gems.services.jqdev.net'
+source 'https://repositories.services.jqdev.net/repository/rubygems/'
 
-# Specify your gem's dependencies in slate.gemspec
 gemspec
 
-group :development do
-  gem 'gem_publisher', '~> 0.0.14'
-end
+gem 'gem_publisher', '~> 0.1.22'
