@@ -7,23 +7,28 @@ module Slate
       @decorator = decorator
     end
 
-    def debug(log_entry)
+    def debug(log_entry = nil, &blk)
+      log_entry = blk.call if block_given?
       @logger.debug(decorate_log_entry(log_entry))
     end
 
-    def info(log_entry)
+    def info(log_entry = nil, &blk)
+      log_entry = blk.call if block_given?
       @logger.info(decorate_log_entry(log_entry))
     end
 
-    def warn(log_entry)
+    def warn(log_entry = nil, &blk)
+      log_entry = blk.call if block_given?
       @logger.warn(decorate_log_entry(log_entry))
     end
 
-    def error(log_entry)
+    def error(log_entry = nil, &blk)
+      log_entry = blk.call if block_given?
       @logger.error(decorate_log_entry(log_entry))
     end
 
-    def fatal(log_entry)
+    def fatal(log_entry = nil, &blk)
+      log_entry = blk.call if block_given?
       @logger.fatal(decorate_log_entry(log_entry))
     end
 
